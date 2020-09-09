@@ -33,10 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTouchBarProvider, NSTouchB
 
         if let frame = window.contentView?.frame {
             let sushi = NSTextView(frame: NSMakeRect(frame.size.width/2-64, frame.size.height/2-64, 150, 128))
-            sushi.string = "🍣"
+            let sushiString = NSMutableAttributedString(html: "<a href='https://www.apple.com'>🍎</a>".data(using: .utf8)!, options: [.characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+            sushi.textStorage?.setAttributedString(sushiString!)
             sushi.drawsBackground = false
             sushi.isEditable = false
-            sushi.isSelectable = false
+            sushi.isSelectable = true
             sushi.font = NSFont.systemFont(ofSize: 128)
             window.contentView?.addSubview(sushi)
         }
